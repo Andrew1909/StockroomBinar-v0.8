@@ -1,0 +1,58 @@
+﻿<Page x:Class="StockroomBinar.Pages.DeliveresPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StockroomBinar.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="740" d:DesignWidth="920"
+ Background="#36393E" ShowsNavigationUI="False"
+      Title="DeliveresPage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+             <StackPanel Orientation="Horizontal">
+            <ComboBox x:Name="ReadyProcentSort" Height="30" Width="200" Margin="3">
+                    <ComboBoxItem Content="Все"/>
+                    <ComboBoxItem Content="Менее 10%"/>
+                    <ComboBoxItem Content="От 11% до 50%"/>
+                    <ComboBoxItem Content="От 51% до 99%"/>
+                    <ComboBoxItem Content="Готовые"/>
+                </ComboBox>
+                <ComboBox x:Name="DateSort" Height="30" Width="200" Margin="3">
+                    <ComboBoxItem Content="Все"/>
+                    <ComboBoxItem Content="Самые ближайшие"/>
+                    <ComboBoxItem Content="Самые дельние"/>
+                </ComboBox>
+            </StackPanel>
+        <ListView x:Name="DeliversView"  Background="Transparent" Foreground="White" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Vertical" Height="auto" >
+                            <TextBlock Text="{Binding СustomerТame}"  TextWrapping="Wrap" FontSize="20" TextDecorations="Underline"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Дата отгрузки: "/>
+                                <TextBlock Text="{Binding Date}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Процент готовности: "  Foreground="{Binding ReadyColor}"/>
+                                <TextBlock x:Name="NumbreReadyProcent" Text="{Binding Status}" Foreground="{Binding ReadyColor}"/>
+                                <TextBlock Text="%"  Foreground="{Binding ReadyColor}"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content=" "/>
+                            <Label Content=" "/>
+                            <Label Content=" "/>
+                            <Button x:Name="LockInfoNatif" Click="LockInfoNatif_Click" Height="40" Width="100" Content="Подробнее" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#202225" Background="White" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </StackPanel>
+        <Frame x:Name="MyFrame"/>
+    </Grid>
+</Page>
